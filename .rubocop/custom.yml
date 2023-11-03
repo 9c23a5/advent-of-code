@@ -13,8 +13,6 @@ Style/TrailingCommaInArguments:
 Layout/SpaceBeforeBlockBraces:
   EnforcedStyle: space
 
-Naming/ClassAndModuleCamelCase:
-
 Lint/ElseLayout:
   Enabled: false
 
