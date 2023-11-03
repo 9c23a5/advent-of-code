@@ -1,0 +1,61 @@
+require:
+  - rubocop-rspec
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/IndexedLet:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/NamedSubject:
+  EnforcedStyle: named_only
+
+RSpec/RepeatedExampleGroupDescription:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+  # EnforcedStyle: have_received or receive
+
+RSpec/StubbedMock:
+  Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+RSpec/SpecFilePathSuffix:
+  Enabled: true
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/PendingWithoutReason:
+  Enabled: false
+
+RSpec/VariableName:
+  Enabled: false
+
+RSpec/Rails/NegationBeValid:
+  Enabled: false
+
+# https://github.com/rubocop/rubocop-rspec/pull/1718/files#diff-06572a96a58dc510037d5efa622f9bec8519bc1beab13c9f251e97e657a9d4edR5
+RSpec/FilePath:
+  Enabled: false

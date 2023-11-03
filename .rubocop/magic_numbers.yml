@@ -1,0 +1,27 @@
+require:
+  - rubocop-magic_numbers
+
+MagicNumbers/NoArgument:
+  IgnoredMethods:
+    - "[]"
+    - abs
+    - ceil
+    - each_slice
+    - floor
+    - hex
+    - rand
+    - round
+    - sleep
+  PermittedValues:
+    - -1
+    - 0
+    - 1
+    - 2
+    - 100
+    - 1000
+
+MagicNumbers/NoAssignment:
+  Enabled: false
+
+MagicNumbers/NoDefault:
+  Enabled: false

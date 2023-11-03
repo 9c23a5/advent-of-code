@@ -1,0 +1,27 @@
+inherit_mode:
+  merge:
+    - Exclude
+
+require:
+  - standard
+  - standard-custom
+  - rubocop-performance
+
+# Copying Standard Rules
+inherit_gem:
+  standard: config/base.yml
+  standard-custom: config/base.yml
+  standard-performance: config/base.yml
+
+inherit_from:
+  - .rubocop/custom.yml
+  - .rubocop/magic_numbers.yml
+  - .rubocop/rspec.yml
+  - .rubocop/thread_safety.yml
+  - .rubocop_todo.yml
+
+AllCops:
+  SuggestExtensions: false
+  CacheRootDirectory: "tmp/rubocop_cache"
+  NewCops: enable
+  TargetRubyVersion: 3.2
