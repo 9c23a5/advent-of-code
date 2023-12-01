@@ -8,8 +8,21 @@
 require_relative "../../lib/aoc_helpers"
 
 class CalibrationValue
-  def initialize(raw_input)
+  WORDS_AS_NUMBERS = {
+    "one" => "1",
+    "two" => "2",
+    "three" => "3",
+    "four" => "4",
+    "five" => "5",
+    "six" => "6",
+    "seven" => "7",
+    "eight" => "8",
+    "nine" => "9"
+  }
+
+  def initialize(raw_input, words_as_int_flag: false)
     @raw_input = raw_input
+    @parse_words = words_as_int_flag
   end
 
   def to_i
@@ -19,7 +32,15 @@ class CalibrationValue
   private
 
   def calculate_value
-    @raw_input.gsub(/[^\d]/, "").chars.values_at(0, -1).join.to_i
+    matching_regex = if @parse_words
+      /(?=(#{WORDS_AS_NUMBERS.keys.join("|")}|\d))/
+    else
+      /\d/
+    end
+
+    matches = @raw_input.scan(matching_regex)
+
+    matches.flatten.map { |match| WORDS_AS_NUMBERS[match] || match }.values_at(0, -1).join.to_i
   end
 end
 
@@ -31,14 +52,21 @@ class Trebuchet
     when CalibrationValue
       @calibrated_value = calibration_input.to_i
     when Array
-      @calibrated_value = calibration_input.map(&:to_i).sum
+      if calibration_input.all? { |item| item.is_a?(CalibrationValue) }
+        @calibrated_value = calibration_input.map(&:to_i).sum
+      end
     end
   end
 end
 
 input = load_input
+
+# Part 1
+
 calibration_values = input.split.map { |line| CalibrationValue.new(line) }
+trebuchet = Trebuchet.new(calibration_values)
+p "Solution for Part 1: #{trebuchet.calibrated_value}"
 
-santa_trebuchet = Trebuchet.new(calibration_values)
-
-p santa_trebuchet.calibrated_value
+correct_calculate_values = input.split.map { |line| CalibrationValue.new(line, words_as_int_flag: true) }
+correct_trebuchet = Trebuchet.new(correct_calculate_values)
+p "Solution for Part 2: #{correct_trebuchet.calibrated_value}"
