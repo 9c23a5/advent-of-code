@@ -25,3 +25,7 @@ MagicNumbers/NoAssignment:
 
 MagicNumbers/NoDefault:
   Enabled: false
+
+MagicNumbers/NoArgument:
+  Exclude:
+    - "specs/*/*.rb"

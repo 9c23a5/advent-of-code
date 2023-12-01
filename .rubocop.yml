@@ -24,7 +24,3 @@ AllCops:
   CacheRootDirectory: "tmp/rubocop_cache"
   NewCops: enable
   TargetRubyVersion: 3.2
-
-MagicNumbers/NoArgument:
-  Exclude:
-    - "specs/*/*.rb"
