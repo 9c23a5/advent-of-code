@@ -53,4 +53,4 @@ result = all_games.map { |game|
   [game.max_red, game.max_blue, game.max_green].inject(&:*)
 }.sum
 
-puts "Result for part 1: #{result}"
+puts "Result for part 2: #{result}"
