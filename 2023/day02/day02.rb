@@ -3,13 +3,12 @@
 require_relative "../../lib/aoc_helpers"
 
 class Game
-  attr_reader :id, :red_played, :green_played, :blue_played
+  attr_reader :id, :max_red, :max_green, :max_blue
   def initialize(id, params)
     @id = id
-    # Array of numbers played for each color...
-    @red_played = params[:red]
-    @green_played = params[:green]
-    @blue_played = params[:blue]
+    @max_red = params[:red]
+    @max_green = params[:green]
+    @max_blue = params[:blue]
   end
 
   def self.parse(string)
@@ -17,9 +16,9 @@ class Game
 
     %i[red green blue].each do |color|
       color_regex = /(\d+)\s#{color}/
-      played_amounts = string.scan(color_regex).flatten.map(&:to_i)
+      amount = string.scan(color_regex).flatten.map(&:to_i).max
 
-      params[color] = played_amounts
+      params[color] = amount
     end
 
     game_id = string.match(/Game (\d+):/).captures.first.to_i
@@ -28,9 +27,9 @@ class Game
   end
 
   def possible?(params)
-    @red_played.max <= params[:red] &&
-      @blue_played.max <= params[:blue] &&
-      @green_played.max <= params[:green]
+    @max_red <= params[:red] &&
+      @max_blue <= params[:blue] &&
+      @max_green <= params[:green]
   end
 end
 
@@ -42,10 +41,8 @@ all_games = input.map { |game_line|
 
 # Part 1
 
-my_maximum = {red: 12, green: 13, blue: 14}
-
 result = all_games.select { |game|
-  game.possible?(my_maximum)
+  game.possible?({red: 12, green: 13, blue: 14})
 }.map(&:id).sum
 
 puts "Result for part 1: #{result}"

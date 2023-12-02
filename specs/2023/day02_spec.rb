@@ -20,9 +20,9 @@ RSpec.describe Game do
       }
 
       it "gets the correct maximum blocks possible" do
-        expect(subject.red_played.max).to eq 4
-        expect(subject.green_played.max).to eq 2
-        expect(subject.blue_played.max).to eq 6
+        expect(subject.max_red).to eq 4
+        expect(subject.max_green).to eq 2
+        expect(subject.max_blue).to eq 6
       end
 
       it "parses game id" do
@@ -42,9 +42,9 @@ RSpec.describe Game do
       }
 
       it "gets the correct maximum blocks possible" do
-        expect(subject.red_played.max).to eq 20
-        expect(subject.green_played.max).to eq 13
-        expect(subject.blue_played.max).to eq 6
+        expect(subject.max_red).to eq 20
+        expect(subject.max_green).to eq 13
+        expect(subject.max_blue).to eq 6
       end
 
       it "parses game id" do
