@@ -18,13 +18,10 @@ This repository aims to solve every AoC on every year therefore I decided on the
 advent-of-code
 └── 2015
     └── day01
-        ├── README.md
         ├── day_01.rb
         ├── day_01_spec.rb
         └── input.txt
 ```
-
-- `README.md`: Reference for the puzzles description
 
 - `day_01.rb`: Solution for the puzzle
 
